@@ -1,0 +1,16 @@
+#sub-container{
+    min-height: 500px;
+}
+
+#container-lateral{
+    min-width: 20%;
+    min-height: 500px;
+}
+
+#exibir-mensagens{
+    min-height: 85%;
+}
+
+#enviar-mensagem{
+    min-height: 20%;
+}

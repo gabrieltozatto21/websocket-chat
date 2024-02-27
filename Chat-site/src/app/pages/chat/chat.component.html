@@ -1,0 +1,24 @@
+<div class="container">
+    <div id="sub-container" class="row mt-2 border border-warning">
+        <div id="container-lateral" class="col-3 align-self-start border border-dark">
+
+        </div>
+        <div class="col-9">
+            <div class="row h-75">
+                <div #exibirMensagens id="exibir-mensagens" class="col-12 h-100 align-self-end border border-dark">
+                    
+                </div>
+            </div>
+            <div class="row h-25">
+                <div id="enviar-mensagem" class="col-12 h-100 align-self-end border border-dark">
+                    <form [formGroup]="mensagemForm" (submit)="enviar()" autocomplete="off" class="form_mensagem">
+                        <button type="submit" [disabled]="mensagemForm.invalid" class="btn btn-primary">Enviar</button>
+                        <input type="text" formControlName="mensagem" id="mensagem">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
