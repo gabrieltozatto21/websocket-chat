@@ -1,5 +1,5 @@
 {
-  "name": "chat-piloto",
+  "name": "chat-api",
   "version": "1.0.0",
   "description": "Desenvolvimento de um chat para aprendizado da biblioteca socket io",
   "main": "index.js",
