@@ -10,13 +10,17 @@ export class ChatService {
   private socket = io('http://localhost:3000');
   
   constructor() { }
-  
+
+  entrarNoGrupo(dados: any){
+    this.socket.emit('entrarSala', dados);
+  }
+
   enviarMensagem(mensagem: string){
     this.socket.emit('novaMensagem', mensagem);
   }
 
   receberMensagens(): Observable<any>{
-    let observer =new Observable<any>(observador => {
+    let observer = new Observable<any>(observador => {
 
       this.socket.on('mensagem', (dados) =>{
         return observador.next(dados);

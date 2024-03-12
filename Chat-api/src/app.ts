@@ -17,21 +17,27 @@ class App{
         });
 
         this.socketIo.on('connection', socket =>{
-            console.log("conectado");
+            socket.on("entrarSala", ({nomeUsuario, sala}) => {
 
-            this.socketIo.emit('mensagem', `${socket.id} entrou no chat!`);
+                socket.join(sala);
 
+                socket.broadcast
+                .to(sala)
+                .emit('mensagem', `${nomeUsuario} entrou no chat!`);
 
-            socket.on('mensagem', (mensagem: any) =>{
-                socket.broadcast.emit('mensagem', mensagem);
+                socket.on('mensagem', (mensagem: any) =>{
+                    this.socketIo
+                    .to(sala)
+                    .emit('mensagem', mensagem);
+                })
+
+                socket.on('disconnect', () =>{
+                    this.socketIo
+                    .to(sala)
+                    .emit('mensagem', `${nomeUsuario} saiu do chat!`);
+                });
             })
 
-
-            socket.on('disconnect', () =>{
-                this.socketIo.emit('mensagem', `${socket.id} saiu do chat!`);
-
-                console.log("desconectado"); 
-            });
         })
     }
 }

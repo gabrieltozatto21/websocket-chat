@@ -1,3 +1,10 @@
-<button type="button" class="btn btn-success">
-    <a [routerLink]="['/chat']">Entrar no chat</a>
-</button>
+<div class="container">
+    <form [formGroup]="formEntrarChat" (submit)="entrarChat()" autocomplete="off">
+        <label for="nomeUsuario">Usuário</label>
+        <input type="text" formControlName="nomeUsuario" id="nomeUsuario">
+        <label for="nomeSala">Sala</label>
+        <input type="text" formControlName="nomeSala" id="nomeSala">
+        <button type="submit" [disabled]="formEntrarChat.invalid" class="btn btn-primary">Entrar no chat</button>
+
+    </form>
+</div>
