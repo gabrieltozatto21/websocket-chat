@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit {
   private mensagemContainer: ElementRef<any>;
   public infoUsuario: InfoUsuario;
 
-  @ViewChild("exibirMensagens", {static: true}) public mensagensView: ElementRef<any>;
+  @ViewChild("mensagens", {static: true}) public mensagensView: ElementRef<any>;
 
   constructor(private formBuilder: FormBuilder,
     private renderer: Renderer2,
@@ -26,7 +26,6 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarMensagemForm();
-    
 
     this.recuperarDadosUsuario();
 

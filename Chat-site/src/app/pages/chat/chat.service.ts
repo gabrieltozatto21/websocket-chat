@@ -16,7 +16,7 @@ export class ChatService {
   }
 
   enviarMensagem(mensagem: string){
-    this.socket.emit('novaMensagem', mensagem);
+    this.socket.emit('chatMensagem', mensagem);
   }
 
   receberMensagens(): Observable<any>{

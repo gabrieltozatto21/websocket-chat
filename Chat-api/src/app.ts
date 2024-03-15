@@ -17,23 +17,25 @@ class App{
         });
 
         this.socketIo.on('connection', socket =>{
-            socket.on("entrarSala", ({nomeUsuario, sala}) => {
+            socket.on("entrarSala", ({nomeUsuario, nomeSala}) => {
 
-                socket.join(sala);
+                console.log(nomeUsuario, nomeSala);
+                
+                socket.join(nomeSala);
 
                 socket.broadcast
-                .to(sala)
+                .to(nomeSala)
                 .emit('mensagem', `${nomeUsuario} entrou no chat!`);
 
-                socket.on('mensagem', (mensagem: any) =>{
-                    this.socketIo
-                    .to(sala)
+                socket.on('chatMensagem', (mensagem: any) =>{
+                    socket.broadcast
+                    .to(nomeSala)
                     .emit('mensagem', mensagem);
                 })
 
                 socket.on('disconnect', () =>{
                     this.socketIo
-                    .to(sala)
+                    .to(nomeSala)
                     .emit('mensagem', `${nomeUsuario} saiu do chat!`);
                 });
             })
