@@ -10,7 +10,9 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class StartComponent implements OnInit {
 
+  public avatarPadrao = "../../../../assets/imgs/person-fill.svg";
   public formEntrarChat: FormGroup;
+  public linkAvatar: string = this.avatarPadrao;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -21,12 +23,19 @@ export class StartComponent implements OnInit {
   ngOnInit(): void {
     this.criarEntrarChatForm();
 
+
+    this.formEntrarChat.get("linkAvatar")
+      ?.valueChanges
+      .subscribe(valor => {
+          this.linkAvatar = valor;
+    })
   }
 
   private criarEntrarChatForm(){
     this.formEntrarChat = this.formBuilder.group({
       nomeUsuario: ['', [Validators.required]],
-      nomeSala: ['', Validators.required]
+      nomeSala: ['', Validators.required],
+      linkAvatar: ['']
     })
   }
 
