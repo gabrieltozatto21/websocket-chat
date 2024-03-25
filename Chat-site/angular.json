@@ -29,7 +29,10 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/particles.js/particles.js",
+              "node_modules/particles.js/demo/js/lib/stats.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -96,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

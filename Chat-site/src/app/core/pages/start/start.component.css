@@ -6,3 +6,10 @@
     width: 80px;
     height: 80px;
 }
+
+#particles-js{ 
+  position:absolute; 
+  width: 100%; 
+  height: 100%; 
+  background-color: #3555d1;
+} 

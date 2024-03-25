@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
+declare var particlesJS: any;
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
@@ -22,7 +23,10 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {
     this.criarEntrarChatForm();
-
+    
+    particlesJS.load('particles-js', '../../assets/json/particles.json', function() {
+      console.log('callback - particles.js config loaded');
+    });
 
     this.formEntrarChat.get("linkAvatar")
       ?.valueChanges
