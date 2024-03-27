@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Caveat";
+  font-optical-sizing: auto;
+  src: url("assets/fonts/Caveat/Caveat-VariableFont_wght.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Pacifico-Regular";
+  font-optical-sizing: auto;
+  src: url("assets/fonts/Pacifico/Pacifico-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+#particles-js{ 
+  position:absolute;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  background-color: rgb(92, 136, 202, 0.6);
+  overflow-y: hidden;
+} 

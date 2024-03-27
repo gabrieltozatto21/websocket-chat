@@ -1,37 +1,90 @@
-<div class="container d-flex justify-content-center mt-3">
-    <div id="sub-container" class="d-flex flex-column justify-content-center bg-secondary rounded">
-        <div id="cabecalho" class="bg-dark rounded-top p-3">
-            <h2 class="text-center text-light">Web Chat Socket</h2>
-        </div>
-        <div id="formEntrada" class="d-flex justify-content-center">
-            <form [formGroup]="formEntrarChat" class="form-group" (submit)="entrarChat()" autocomplete="off">
-            
-                <div class="d-flex justify-content-center w-100 mt-2">
-                    <img [src]="linkAvatar" id="avatar" class="bg-light rounded-circle border border-dark">
-                </div>
-
-                <div>
-                    <label for="nomeUsuario">Usuário</label>
-                    <input class="form-control" type="text" formControlName="nomeUsuario" id="nomeUsuario">
-                </div>
-    
-                <div>
-                    <label for="nomeSala">Sala</label>
-                    <input class="form-control" type="text" formControlName="nomeSala" id="nomeSala">
-                </div>
-
-                <div>
-                    <label for="nomeSala">Link Avatar</label>
-                    <input class="form-control" type="text" formControlName="linkAvatar" id="linkAvatar">
-                </div>
-    
-                <div class="d-flex justify-content-center m-2">
-                    <button type="submit" class="form-control" [disabled]="formEntrarChat.invalid" class="btn btn-primary">Entrar no chat</button>
-                </div>
-        
-            </form>
-        </div>
+<div
+  class="container d-flex justify-content-center aligm-items-center vw-100 vh-100"
+>
+  <div
+    id="sub-container"
+    class="d-flex flex-column justify-content-center rounded mb-5"
+  >
+    <div id="cabecalho" class="rounded-top p-3 texto-aplicacao text-center text-light">
+      <p class="text-uppercase">Bem-vindo ao</p>
+      <h2 id="nome-aplicacao">
+        Web Chat Socket
+      </h2>
     </div>
-</div>
+    
+    <div class="d-flex justify-content-center w-100 mt-2 mb-3">
+      <img
+        [src]="linkAvatar"
+        id="avatar"
+        class="bg-light rounded-circle border border-dark"
+      />
+    </div>
 
-<div id="particles-js"></div> 
+    <div id="formEntrada" class="">
+      <form
+        [formGroup]="formEntrarChat"
+        class="form-group"
+        (submit)="entrarChat()"
+        autocomplete="off"
+      >
+        <div class="mb-2 d-flex">
+          <label class="label-icon" for="nomeUsuario">
+            <div class="icon">
+              <span class="material-icons"> person </span>
+            </div>
+          </label>
+
+          <input
+            class=""
+            type="text"
+            formControlName="nomeUsuario"
+            placeholder="Usuário"
+            id="nomeUsuario"
+          />
+        </div>
+
+        <div class="mb-2 d-flex">
+          <label class="label-icon" for="nomeSala">
+            <div class="icon">
+              <span class="material-icons"> meeting_room </span>
+            </div>
+          </label>
+
+          <input
+            class=""
+            type="text"
+            formControlName="nomeSala"
+            placeholder="Sala"
+            id="nomeSala"
+          />
+        </div>
+
+        <div class="mb-2 d-flex">
+          <label class="label-icon" for="linkAvatar">
+            <div class="icon">
+              <span class="material-icons"> person_pin </span>
+            </div>
+          </label>
+          <input
+            class=""
+            type="text"
+            formControlName="linkAvatar"
+            placeholder="Icone"
+            id="linkAvatar"
+          />
+        </div>
+
+        <div class="d-flex">
+          <button
+            type="submit"
+            [disabled]="formEntrarChat.invalid"
+            class="enviar"
+          >
+            Entrar no chat
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StartModule } from './pages/start/start.module';
 import { ChatModule } from '../pages/chat/chat.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ChatModule } from '../pages/chat/chat.module';
     BrowserModule,
     AppRoutingModule,
     StartModule,
-    ChatModule
+    ChatModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
