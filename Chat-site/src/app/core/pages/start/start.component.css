@@ -18,6 +18,15 @@
   max-inline-size: 20rem;
 }
 
+.label-icon{
+  border-radius: 0.25rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-inline: 1.10rem;
+}
+
 .icon{
   block-size: 1em;
   fill: #606468;
@@ -62,16 +71,6 @@ input[type="text"]:hover {
 .enviar:focus,
 .enviar:hover{
   background-color: rgba(241, 241, 241, 0.6)
-}
-
-
-.label-icon{
-  border-radius: 0.25rem;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  padding-inline: 1.10rem;
 }
 
 .input-chat{
