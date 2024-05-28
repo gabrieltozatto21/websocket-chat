@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit {
   public mensagemForm: FormGroup;
   private mensagemContainer: ElementRef<any>;
   public infoUsuario: InfoUsuario;
+  public usuariasConectados: Array<InfoUsuario>;
 
   @ViewChild("mensagens", {static: true}) public mensagensView: ElementRef<any>;
 
@@ -29,12 +30,22 @@ export class ChatComponent implements OnInit {
 
     this.recuperarDadosUsuario();
 
+    this.recuperarUsuariosConectados();
+
     this.chatService.entrarNoGrupo(this.infoUsuario);
 
     this.chatService.receberMensagens()
       .subscribe(dados => {
         this.adicionarMensagem(dados);
       });
+  }
+  
+  recuperarUsuariosConectados() {
+    this.usuariasConectados = new Array<InfoUsuario>(
+      {nomeUsuario: "Larissa", nomeSala: 'teste', linkAvatar: 'https://media4.giphy.com/media/9JIXRFfzne5PyIDwT5/giphy.gif?cid=6c09b9521yff7nlgizd37zrdf8innj2q5h4cfb7j5s0mpci9&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s'},
+      {nomeUsuario: "Paulo", nomeSala: 'teste', linkAvatar: 'https://s2.glbimg.com/KIqJ85ydDfupxMuEkz59l8jB5y8=/0x0:480x270/1000x0/i.s3.glbimg.com/v1/AUTH_bc8228b6673f488aa253bbcb03c80ec5/internal_photos/bs/2020/t/t/XYABdGQK6T9MEA5NIi2A/animated-gif-downsized-large-1-.gif'},
+      {nomeUsuario: "Ayka", nomeSala: 'teste', linkAvatar: 'https://media.tenor.com/5P0-xmeMUt0AAAAM/vasco-vegetti.gif'},
+    );
   }
 
   private recuperarDadosUsuario() {
