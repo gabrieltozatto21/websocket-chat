@@ -62,9 +62,17 @@ export class ChatComponent implements OnInit {
   adicionarMensagem(mensagem: any){
     let elemento = this.mensagensView.nativeElement;
     var elementoMensagem = this.renderer.createElement("p");
-    elementoMensagem.classList.add("d-block");
+    var div = this.renderer.createElement("div");
+    div.classList.add("w-100");
+    div.classList.add("d-flex");
+    div.classList.add("justify-content-end");
+    elementoMensagem.classList.add("mensagem");
+    elementoMensagem.classList.add("d-flex");
+    elementoMensagem.classList.add("justify-content-end");
+    elementoMensagem.classList.add("mensagem-esquerda");
     elementoMensagem.innerText = mensagem;
-    elemento.appendChild(elementoMensagem);
+    div.appendChild(elementoMensagem);
+    elemento.appendChild(div);
   }
 
   enviar(){
