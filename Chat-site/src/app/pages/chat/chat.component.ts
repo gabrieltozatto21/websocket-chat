@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2, TemplateRef, ViewChild } from
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from './chat.service';
 import { CookieService } from 'ngx-cookie-service';
-import { InfoUsuario } from './models/infoUsuario';
+import { InfoUsuario } from '../../core/models/infoUsuario';
 
 @Component({
   selector: 'app-chat',
@@ -36,7 +36,9 @@ export class ChatComponent implements OnInit {
 
     this.chatService.receberMensagens()
       .subscribe(dados => {
-        this.adicionarMensagem(dados);
+        console.log(dados);
+        
+        this.adicionarMensagemEsquerda(dados);
       });
   }
   
@@ -59,7 +61,7 @@ export class ChatComponent implements OnInit {
     })
   }
 
-  adicionarMensagem(mensagem: any){
+  adicionarMensagemEsquerda(mensagem: any){
     let elemento = this.mensagensView.nativeElement;
     var elementoMensagem = this.renderer.createElement("p");
     var div = this.renderer.createElement("div");
@@ -68,16 +70,32 @@ export class ChatComponent implements OnInit {
     div.classList.add("justify-content-end");
     elementoMensagem.classList.add("mensagem");
     elementoMensagem.classList.add("d-flex");
-    elementoMensagem.classList.add("justify-content-end");
+    elementoMensagem.classList.add("justify-content-start");
     elementoMensagem.classList.add("mensagem-esquerda");
-    elementoMensagem.innerText = mensagem;
+    elementoMensagem.innerText = mensagem.mensagem;
+    div.appendChild(elementoMensagem);
+    elemento.appendChild(div);
+  }
+
+  adicionarMensagemDireita(mensagem: any){
+    let elemento = this.mensagensView.nativeElement;
+    var elementoMensagem = this.renderer.createElement("p");
+    var div = this.renderer.createElement("div");
+    div.classList.add("w-100");
+    div.classList.add("d-flex");
+    div.classList.add("justify-content-start");
+    elementoMensagem.classList.add("mensagem");
+    elementoMensagem.classList.add("d-flex");
+    elementoMensagem.classList.add("justify-content-end");
+    elementoMensagem.classList.add("mensagem-direita");
+    elementoMensagem.innerText = mensagem.mensagem;
     div.appendChild(elementoMensagem);
     elemento.appendChild(div);
   }
 
   enviar(){
     let resposta = this.mensagemForm.getRawValue();
-    this.adicionarMensagem(resposta.mensagem);
+    this.adicionarMensagemDireita(resposta.mensagem);
 
     this.chatService.enviarMensagem(resposta.mensagem);
     

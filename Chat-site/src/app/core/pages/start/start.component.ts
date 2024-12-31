@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { SessaoService } from '../../services/sessao.service';
 
 @Component({
   selector: 'app-start',
@@ -16,16 +17,21 @@ export class StartComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-    private cookieService: CookieService){
+    private cookieService: CookieService,
+    private sessao : SessaoService){
 
   }
 
   ngOnInit(): void {
     this.criarEntrarChatForm();
+
+    var InfoUsuario = this.sessao.recuperar();
+
+    this.formEntrarChat.get("linkAvatar")?.setValue(InfoUsuario.linkAvatar);
   
     this.formEntrarChat.get("linkAvatar")
       ?.valueChanges
-      .subscribe(valor => {
+      .subscribe((valor: string) => {
           this.linkAvatar = valor;
     })
   }
